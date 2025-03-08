@@ -174,7 +174,7 @@ let
        }
        ''
          mkdir -p $out/bin
-         makeWrapper ${rubyEnv}/bin/rails $out/bin/discourse-rails
+         makeWrapper ${rubyEnv}/bin/rails $out/bin/discourse-rails \
              ${
                lib.concatStrings (lib.mapAttrsToList (name: value: "--set ${name} '${value}' ") runtimeEnv)
              } \
