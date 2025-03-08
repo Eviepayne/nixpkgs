@@ -267,6 +267,7 @@ let
       "out"
       "javascripts"
       "node_modules"
+      "rails"
     ];
 
     patches = [
@@ -467,7 +468,6 @@ let
         runtimeEnv
         runtimeDeps
         rake
-        rails
         mkDiscoursePlugin
         assets
         ;
