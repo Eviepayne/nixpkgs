@@ -467,6 +467,7 @@ let
         runtimeEnv
         runtimeDeps
         rake
+        rails
         mkDiscoursePlugin
         assets
         ;
