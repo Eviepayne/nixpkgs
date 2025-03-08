@@ -267,7 +267,6 @@ let
       "out"
       "javascripts"
       "node_modules"
-      "rails"
     ];
 
     patches = [

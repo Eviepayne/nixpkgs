@@ -749,7 +749,7 @@ in
       path = cfg.package.runtimeDeps ++ [
         postgresqlPackage
         pkgs.replace-secret
-        cfg.package.rake
+        cfg.package.rails
       ];
       environment = cfg.package.runtimeEnv // {
         UNICORN_TIMEOUT = builtins.toString cfg.unicornTimeout;
@@ -1144,6 +1144,7 @@ in
 
     environment.systemPackages = [
       cfg.package.rake
+      cfg.package.rails
     ];
   };
 
