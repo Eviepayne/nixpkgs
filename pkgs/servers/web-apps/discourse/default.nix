@@ -167,6 +167,21 @@ let
             --chdir '${discourse}/share/discourse'
       '';
 
+   rails =
+     runCommand "discourse-rails"
+       {
+         nativeBuildInputs = [ makeWrapper ];
+       }
+       ''
+         mkdir -p $out/bin
+         makeWrapper ${rubyEnv}/bin/rails $out/bin/discourse-rails
+             ${
+               lib.concatStrings (lib.mapAttrsToList (name: value: "--set ${name} '${value}' ") runtimeEnv)
+             } \
+             --prefix PATH : ${lib.makeBinPath runtimeDeps} \
+             --chdir '${discourse}/share/discourse'
+       '';
+
   rubyEnv = bundlerEnv {
     name = "discourse-ruby-env-${version}";
     inherit version ruby;
@@ -452,6 +467,7 @@ let
         runtimeEnv
         runtimeDeps
         rake
+        rails
         mkDiscoursePlugin
         assets
         ;
